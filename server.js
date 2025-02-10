@@ -3,11 +3,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const dataRoutes = require("./routes/dataRoutes");
+const logger = require("./middleware/logger");
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(logger);
 app.use("", dataRoutes);
 
 const PORT = process.env.PORT;
